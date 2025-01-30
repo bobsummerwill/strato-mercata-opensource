@@ -1,0 +1,11 @@
+
+name: nibblestring
+
+library:
+  source-dirs: src
+  dependencies:
+    - base
+    - base16-bytestring
+    - bytestring
+    - format
+    - Ranged-sets

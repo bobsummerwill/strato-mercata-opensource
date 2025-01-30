@@ -1,0 +1,94 @@
+name: blockapps-tools
+version: 0.0.1
+build-type: Simple
+author: Jamshid
+maintainer:    jamshidnh@gmail.com
+synopsis: A Haskell version of an Ethereum client
+category:      Data Structures
+description:
+              Tool to query the ethereum databases
+
+dependencies:
+  - base
+
+
+library:
+  source-dirs: src/
+  dependencies:
+    - aeson
+    - base16-bytestring
+    - binary
+    - blockapps-data
+    - blockapps-datadefs
+    - blockapps-mpdbs
+    - blockstanbul
+    - bytestring
+    - common-log
+    - conduit
+    - data-default
+    - ethereum-discovery
+    - ethereum-rlp
+    - filepath
+    - format
+    - hedis
+    - hflags
+    - kafka-monad
+    - labeled-error
+    - lens
+    - leveldb-haskell
+    - memory
+    - merkle-patricia-db
+    - monad-alter
+    - monad-logger
+    - monad-loops
+    - nibblestring
+    - persistent-postgresql
+    - resourcet
+    - seqevents
+    - strato-conf
+    - strato-index
+    - strato-model
+    - strato-redis-blockdb
+    - strato-sequencer
+    - strato-statediff
+    - text
+    - time
+    - transformers
+    - type-lits
+    - unliftio
+    - vm-tools
+
+executables:
+  strato-barometer:
+    source-dirs: exec_src/
+    main: Main.hs
+    other-modules: []
+    dependencies:
+      - blockapps-tools
+      - bytestring
+      - cmdargs
+      - labeled-error
+      - merkle-patricia-db
+      - process
+      - seqevents
+      - strato-model
+      - strato-p2p
+      - text
+
+  b16decode:
+    source-dirs: exec_src/
+    main: B16Decode.hs
+    dependencies:
+      - base
+      - bytestring
+      - labeled-error
+    other-modules: []
+   
+  modifyDate:
+    source-dirs: exec_src/
+    main: ModifyDate.hs
+    dependencies:
+      - base
+      - hflags
+      - time
+    other-modules: []

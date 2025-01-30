@@ -1,0 +1,136 @@
+name: solid-vm
+
+dependencies:
+  - base
+
+library:
+  source-dirs: src/
+  exposed-modules:
+    - Blockchain.SolidVM
+    - Blockchain.SolidVM.Simple
+    - Blockchain.SolidVM.SM
+  ghc-options: -Wall -O2
+  dependencies:
+  - base16-bytestring
+  - blockapps-data
+  - blockapps-datadefs
+  - blockapps-haskoin
+  - blockapps-mpdbs
+  - bytestring
+  - common-log
+  - containers
+  - cryptohash
+  - data-default
+  - debugger
+  - Decimal
+  - deepseq
+  - ethereum-rlp
+  - exceptions
+  - extra
+  - format
+  - labeled-error
+  - lens
+  - merkle-patricia-db
+  - mtl
+  - monad-alter
+  - nibblestring
+  - ordered-containers
+  - parsec
+  - solid-vm-compiler
+  - solid-vm-model
+  - solid-vm-parser
+  - source-tools
+  - strato-model
+  - text
+  - time
+  - transformers
+  - unliftio
+  - utf8-string
+  - vector
+  - vm-tools
+  - ordered-containers
+
+
+
+executables:
+  exprs-needed:
+    source-dirs: exec_src
+    other-modules: []
+    main: ExprsNeeded.hs
+    dependencies:
+      - containers
+      - parsec
+      - solid-vm-compiler
+      - solid-vm-model
+      - solid-vm-parser
+      - solid-vm-static-analysis
+      - text
+
+tests:
+  solid-vm-spec:
+    source-dirs: tests/
+    main: Main.hs
+    ghc-options: -dynamic
+    dependencies:
+      - QuickCheck
+      - aeson
+      - async
+      - blockapps-data
+      - blockapps-datadefs
+      - blockapps-mpdbs
+      - bytestring
+      - common-log
+      - composable-monads-base
+      - containers
+      - crypto-api
+      - ethereum-rlp
+      - hflags
+      - hspec
+      - hspec-expectations-lifted
+      - labeled-error
+      - lens
+      - merkle-patricia-db
+      - monad-alter
+      - raw-strings-qq
+      - seqevents
+      - solid-vm
+      - solid-vm-compiler
+      - solid-vm-model
+      - solid-vm-parser
+      - solid-vm-static-analysis
+      - source-tools
+      - strato-genesis
+      - strato-init
+      - strato-model
+      - text
+      - time
+      - transformers
+      - utf8-string
+      - vm-tools
+      - ordered-containers
+
+benchmarks:
+    codebench:
+      source-dirs: bench/
+      main: CodeBench.hs
+      ghc-options: -dynamic
+      dependencies:
+        - file-embed
+        - solid-vm
+        - deepseq
+        - criterion
+        - binary
+        - memory
+        - bytestring
+        - containers
+        - text
+        - parsec
+        - strato-model
+        - solid-vm-compiler
+        - solid-vm-parser
+        - solid-vm-static-analysis
+        - solid-vm-model
+        - lens
+        - common-log
+        - vm-tools
+        - hflags

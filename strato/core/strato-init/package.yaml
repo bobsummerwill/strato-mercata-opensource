@@ -1,0 +1,112 @@
+name: strato-init
+version: 0.0.1
+build-type: Simple
+author: Jamshid
+maintainer: jamshidnh@gmail.com
+synopsis: A tool to setup the DBs for a Strato instance
+category: Data Structures
+description: A tool to setup the DBs for a Strato instance
+
+ghc-options: -Wall -O2 -threaded
+
+dependencies:
+  - base
+
+library:
+  source-dirs: src/
+  dependencies:
+  - aeson
+  - base16-bytestring
+  - blockapps-data
+  - blockapps-datadefs
+  - blockapps-mpdbs
+  - blockapps-vault-wrapper-api
+  - blockapps-vault-wrapper-client
+  - bytestring
+  - common-log
+  - conduit
+  - containers
+  - directory
+  - ethereum-discovery
+  - ethereum-rlp
+  - evm-solidity
+  - exceptions
+  - file-embed
+  - filepath
+  - format
+  - hflags
+  - http-client
+  - http-types
+  - kafka-monad
+  - leveldb-haskell
+  - merkle-patricia-db
+  - monad-alter
+  - nibblestring
+  - persistent-postgresql
+  - redis-monad
+  - resourcet
+  - seqevents
+  - servant-client
+  - solid-vm-compiler
+  - solid-vm-model
+  - sql-monad
+  - strato-conf
+  - strato-genesis
+  - strato-index
+  - strato-model
+  - strato-networks
+  - strato-redis-blockdb
+  - strato-sequencer
+  - strato-statediff
+  # - strato-p2p
+  - temporary
+  - text
+  - transformers
+  - turtle
+  - unliftio
+  - unliftio-core
+  - vm-tools
+  - yaml
+  - ordered-containers
+
+executables:
+
+  strato-setup:
+    source-dirs: exec_src/
+    main: Main.hs
+    dependencies:
+      - common-log
+      - hflags
+      - kafka-monad
+      - strato-init
+      - strato-model
+
+    other-modules: []
+
+  genesis-builder:
+    source-dirs: exec_src/
+    main: GenesisBuilder.hs
+    dependencies:
+      - aeson
+      - bytestring
+      - strato-genesis
+      - strato-init
+      - strato-model
+    other-modules: []
+
+tests:
+  strato-init-test:
+    source-dirs: test/
+    main: Main.hs
+    ghc-options: -dynamic
+    dependencies:
+      - aeson
+      - blockapps-data
+      - bytestring
+      - hspec
+      - json-stream
+      - labeled-error
+      - merkle-patricia-db
+      - strato-genesis
+      - strato-model
+      - time

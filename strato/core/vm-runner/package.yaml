@@ -1,0 +1,126 @@
+name: vm-runner
+version: 0.0.4
+build-type: Simple
+author: Jamshid
+maintainer:    jamshidnh@gmail.com
+synopsis: The executable that runs VMs for transactions
+category:      Data Structures
+
+dependencies:
+  - base
+
+library:
+  source-dirs: src/
+  exposed-modules:
+    - Blockchain.BlockChain
+    - Blockchain.Event
+    - Executable.EthereumVM
+    - Executable.EthereumVM2
+  ghc-options: -Wall -O2
+  dependencies:
+  - binary
+  - blockapps-data
+  - blockapps-datadefs
+  - blockapps-mpdbs
+  - blockstanbul
+  - bytestring
+  - common-log
+  - composable-monads-base
+  - conduit
+  - containers
+  - cross-monitoring
+  - debugger
+  - dlist
+  - ethereum-rlp
+  - ethereum-vm
+  - extra
+  - format
+  - lens
+  - kafka-monad
+  - merkle-patricia-db
+  - monad-alter
+  - prometheus-client
+  - seqevents
+  - solid-vm
+  - solid-vm-model
+  - sql-monad
+  - strato-conf
+  - strato-genesis
+  - strato-index
+  - strato-model
+  - strato-redis-blockdb
+  - strato-statediff
+  - text
+  - time
+  - transformers
+  - unliftio
+  - vm-tools
+  - ordered-containers
+
+executables:
+  vm-runner:
+    source-dirs: exec_src
+    main: Main.hs
+    dependencies:
+      - async
+      - blockapps-init
+      - common-log
+      - debugger
+      - hflags
+      - process-monitor
+      - solid-vm-fuzzer
+      - strato-model
+      - vm-runner
+      - vm-tools
+      - wai-middleware-prometheus
+      - warp
+    ghc-options: -Wall -O2 -threaded -rtsopts -fprof-auto 
+
+tests:
+  ethereum-vm-test:
+    source-dirs: test/
+    main: Spec.hs
+    dependencies:
+      - base16-bytestring
+      - blockapps-data
+      - blockapps-mpdbs
+      - blockstanbul
+      - bytestring
+      - common-log
+      - containers
+      - ethereum-vm
+      - hflags
+      - hspec
+      - hspec-expectations-lifted
+      - labeled-error
+      - merkle-patricia-db
+      - monad-alter
+      - strato-model
+      - vm-runner
+      - vm-tools
+    ghc-options: -Wall -Werror -threaded -rtsopts -with-rtsopts=-N -dynamic
+
+benchmarks:
+  microbench:
+    source-dirs: bench/
+    main: Microbench.hs
+    other-modules: []
+    ghc-options: -dynamic
+    dependencies:
+      - bytestring
+      - containers
+      - criterion
+      - deepseq
+      - ethereum-vm
+      - strato-model
+      - vector
+
+  extractbench:
+    source-dirs: bench/
+    main: ExtractBench.hs
+    ghc-options: -dynamic
+    other-modules: []
+    dependencies:
+      - bytestring
+      - criterion
+      - ethereum-vm

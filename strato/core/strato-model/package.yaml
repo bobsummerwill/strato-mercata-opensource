@@ -1,0 +1,107 @@
+name:                strato-model
+version:             0.1.0.0
+author:              BlockApps
+maintainer:          blockapps
+build-type:          Simple
+
+dependencies:
+  - base
+  - blockapps-haskoin
+  - bytestring
+
+
+
+
+ghc-options: -Wall -Werror -fno-warn-warnings-deprecations
+
+library:
+  source-dirs: src
+  default-extensions:
+    - MultiParamTypeClasses
+    - FlexibleContexts
+    - FlexibleInstances
+    - GeneralizedNewtypeDeriving
+    - GADTs
+    - RecordWildCards
+    - FunctionalDependencies
+  dependencies:
+    - QuickCheck
+    - aeson
+    - aeson-casing
+    - asn1-encoding
+    - asn1-types
+    - base16-bytestring
+    - binary
+    - bytestring-arbitrary
+    - conduit
+    - containers
+    - cpu
+    - crypton
+    - crypton-x509
+    - crypton-x509-validation
+    - data-default
+    - deepseq
+    - ethereum-rlp
+    - extra
+    - fast-keccak256
+    - format
+    - generic-arbitrary
+    - generic-deriving
+    - hashable
+    - hflags
+    - hourglass
+    - http-api-data
+    - integer-gmp
+    - labeled-error
+    - lens
+    - memory
+    - monad-alter
+    - mtl
+    - nibblestring
+    - quickcheck-instances
+    - path-pieces
+    - persistent
+    - pem
+    - primitive
+    - raw-strings-qq
+    - secp256k1-haskell
+    - servant
+    - servant-docs
+    - servant-server
+    - swagger2
+    - text
+    - time
+    - transformers
+    - vector
+    - Ranged-sets
+    - generic-random
+
+tests:
+  strato-model-tests:
+    source-dirs: test/
+    main: Spec.hs
+    ghc-options: -dynamic # this flag is the result of two weeks I spent trying to link secp256k1_ecdh
+    dependencies:
+      - aeson
+      - aeson-qq
+      - binary
+      - ethereum-rlp
+      - labeled-error
+      - persistent
+      - Ranged-sets
+      - strato-model
+      - text
+      - hspec
+      - QuickCheck
+
+
+benchmarks:
+  word256:
+    source-dirs: bench/
+    ghc-options: -dynamic
+    main: Word256Bench.hs
+    dependencies:
+      - strato-model
+      - criterion
+
+

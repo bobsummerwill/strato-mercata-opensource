@@ -1,0 +1,55 @@
+name:                strato-api
+
+dependencies:
+- base
+- bloc2
+- hflags
+- source-tools
+
+executables:
+  strato-api:
+    main:                Main.hs
+    source-dirs:         exec_src
+    other-modules:
+    - Options
+    dependencies:
+    - aeson
+    - bloc2api
+    - blockapps-data
+    - blockapps-datadefs
+    - blockapps-mpdbs
+    - blockapps-init
+    - bytestring
+    - cache
+    - clock
+    - common-log
+    - containers
+    - core-api2
+    - format
+    - http-types
+    - identity-monad
+    - insert-ordered-containers
+    - lens
+    - monad-alter
+    - process-monitor
+    - regex-compat
+    - servant-client-core
+    - servant-multipart
+    - servant-server
+    - servant-swagger
+    - servant-swagger-ui
+    - solid-vm-model
+    - sql-monad
+    - strato-model
+    - swagger2
+    - transformers
+    - unliftio
+    - vault-monad
+    - wai
+    - wai-cors
+    - wai-extra
+    - wai-middleware-prometheus
+    - warp
+    # Don't touch this next setting, leave -threaded, otherwise it WILL NOT WORK
+    # https://blockappsdev.slack.com/archives/G5E7K3ETX/p1645104924934129
+    ghc-options: -threaded

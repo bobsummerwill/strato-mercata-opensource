@@ -1,0 +1,97 @@
+name: vm-tools
+version: 0.0.4
+build-type: Simple
+author: Jamshid
+maintainer:    jamshidnh@gmail.com
+synopsis: types and tools needed to write a VM for Strato
+category:      Data Structures
+
+dependencies:
+  - base
+  - hflags
+
+library:
+  source-dirs: src/
+  exposed-modules:
+    - Blockchain.Bagger
+    - Blockchain.Bagger.BaggerState
+    - Blockchain.Bagger.Transactions
+    - Blockchain.Data.BlockSummary
+    - Blockchain.Data.ExecResults
+    - Blockchain.DB.BlockSummaryDB
+    - Blockchain.DB.ModifyStateDB
+    - Blockchain.StateRootMismatch
+    - Blockchain.Stream.Action
+    - Blockchain.Stream.VMEvent
+    - Blockchain.Timing
+    - Blockchain.TxRunResultCache
+    - Blockchain.MemVMContext
+    - Blockchain.VMContext
+    - Blockchain.VMOptions
+    - Blockchain.VM.VMException
+    - Blockchain.VMMetrics
+    - Blockchain.Wiring
+    - Executable.EVMFlags
+  ghc-options: -Wall -O2
+  dependencies:
+    - aeson
+    - binary
+    - binary-instances
+    - blockapps-data
+    - blockapps-datadefs
+    - blockapps-init
+    - blockapps-mpdbs
+    - blockstanbul
+    - bytestring
+    - common-log
+    - composable-monads-base
+    - conduit
+    - containers
+    - cross-monitoring
+    - data-default
+    - debugger
+    - deepseq
+    - directory
+    - dlist
+    - ethereum-rlp
+    - exceptions
+    - extra
+    - format
+    - generic-arbitrary
+    - hedis
+    - kafka-monad
+    - lens
+    - leveldb-haskell
+    - lrucache
+    - merkle-patricia-db
+    - monad-alter
+    - mtl
+    - nibblestring
+    - ordered-containers
+    - persistent-sqlite
+    - prometheus-client
+    - QuickCheck
+    - quickcheck-instances
+    - resourcet
+    - seqevents
+    - solid-vm-model
+    - sql-monad
+    - strato-conf
+    - strato-model
+    - strato-redis-blockdb
+    - strato-statediff
+    - text
+    - time
+    - transformers
+    - unliftio
+
+
+
+tests:
+  contextm-test:
+    source-dirs: test/
+    main: Spec.hs
+    ghc-options: -Wall -O2 -dynamic
+    dependencies:
+      - hspec
+      - vm-tools

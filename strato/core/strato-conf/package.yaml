@@ -1,0 +1,26 @@
+name:                strato-conf
+version:             0.1.0.0
+author:              Jamshid
+category:            Web
+build-type:          Simple
+
+
+
+
+library:
+  source-dirs:      src
+  # ghc-options: -Wall -Werror
+
+  # -fsimpl-tick-factor=800 -funfolding-case-threshold=140 -funfolding-case-scaling=8 
+  # # 
+
+  dependencies:
+    - base
+    - bytestring
+    - containers
+    - hedis
+    - kafka-monad
+    - mtl
+    - postgresql-simple
+    - transformers
+    - yaml

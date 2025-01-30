@@ -1,0 +1,166 @@
+name:                strato-sequencer
+version:             0.1.0.0
+author:              Ilya Ostrovskiy
+maintainer:          ilya@blockapps.net
+copyright:           2016 BlockApps Inc
+category:            Blockchain
+build-type:          Simple
+
+
+dependencies:
+  - base
+
+ghc-options: -Wall -O2 -threaded -rtsopts -fprof-auto
+
+library:
+  source-dirs:     src
+  dependencies:
+    - alarmclock
+    - binary
+    - blockapps-data
+    - blockapps-datadefs
+    - blockapps-init
+    - blockapps-vault-wrapper-api
+    - blockapps-vault-wrapper-client
+    - blockstanbul
+    - bytestring
+    - clock
+    - common-log
+    - composable-monads-base
+    - conduit
+    - data-default
+    - directory
+    - ethereum-rlp
+    - extra
+    - format
+    - http-client
+    - kafka-monad
+    - labeled-error
+    - lens
+    - leveldb-haskell
+    - lifted-async
+    - monad-alter
+    - prometheus-client
+    - seqevents
+    - stm
+    - stm-conduit
+    - strato-conf
+    - strato-model
+    - strato-redis-blockdb
+    - servant-client
+    - text
+    - time
+    - transformers
+    - classy-prelude
+    - containers
+    - mtl
+    - partitioner
+    - resourcet
+    - stm-chans
+    - unliftio
+
+executables:
+  strato-sequencer:
+    source-dirs:      exec-src
+    main:             Main.hs
+    dependencies:
+      - async
+      - blockapps-data
+      - blockapps-init
+      - blockapps-vault-wrapper-api
+      - blockapps-vault-wrapper-client
+      - blockstanbul
+      - bytestring
+      - common-log
+      - hedis
+      - hflags
+      - http-client
+      - kafka-monad
+      - process-monitor
+      - prometheus-client
+      - safe
+      - seqevents
+      - servant-client
+      - stm
+      - stm-chans
+      - strato-conf
+      - strato-genesis
+      - strato-model
+      - strato-redis-blockdb
+      - strato-sequencer
+      - text
+      - wai-middleware-prometheus
+      - warp
+    other-modules: [Flags]
+
+  forced-config-change:
+    source-dirs: exec-src
+    main: ForcedConfigChange.hs
+    other-modules: []
+    dependencies:
+      - blockstanbul
+      - hflags
+      - kafka-monad
+      - seqevents
+      - strato-conf
+
+#For now, these tests are causing me more trouble than are useful, so I'm turning them off
+#tests:
+#  strato-sequencer-spec:
+#    source-dirs:   test
+#    main:          Main.hs
+#    ghc-options: -threaded -dynamic
+#    dependencies:
+#      - async
+#      - base16-bytestring
+#      - blockapps-data
+#      - blockapps-datadefs
+#      - blockapps-privacy
+#      - blockstanbul
+#      - bytestring
+#      - classy-prelude
+#      - common-log
+#      - conduit
+#      - containers
+#      - directory
+#      - entropy
+#      - ethereum-rlp
+#      - format
+#      - hflags
+#      - hspec
+#      - hspec-contrib
+#      - hspec-core
+#      - hspec-expectations-lifted
+#      - HUnit
+#      - labeled-error
+#      - monad-alter
+#      - mtl
+#      - QuickCheck
+#      - seqevents
+#      - servant-client
+#      - stm
+#      - stm-chans
+#      - strato-model
+#      - strato-sequencer
+#      - text
+#      - time
+#      - wai-extra
+#      - wai-middleware-prometheus
+#      - warp
+#      - x509-certs
+
+benchmarks:
+  send-to-blockstanbul:
+    source-dirs: bench/
+    main: BlockstanbulSend.hs
+    ghc-options: -dynamic
+    dependencies:
+      - blockstanbul
+      - strato-sequencer
+      - blockapps-data
+      - classy-prelude
+      - containers
+      - mtl
+      - resourcet
+      - stm-chans
+      - unliftio

@@ -1,0 +1,54 @@
+name: blockstanbul
+ghc-options: -Wall -Werror
+
+dependencies:
+  - base
+
+
+library:
+  source-dirs: src/
+  dependencies:
+  - QuickCheck
+  - aeson
+  - binary
+  - blockapps-data
+  - bytestring
+  - common-log
+  - conduit
+  - containers
+  - cross-monitoring
+  - cryptonite
+  - data-default
+  - deepseq
+  - ethereum-rlp
+  - extra
+  - format
+  - generic-arbitrary
+  - hflags
+  - lens
+  - mtl
+  - prometheus-client
+  - strato-model
+  - text
+  - transformers
+  - monad-alter
+
+tests:
+  blockstanbul-test:
+    main: Main.hs
+    source-dirs: test/
+    ghc-options: -dynamic
+    dependencies:
+      - common-log
+      - hflags
+      - hspec
+
+
+benchmarks:
+  one-node:
+    source-dirs: bench/
+    main: OneNode.hs
+    ghc-options: -dynamic
+    dependencies:
+      - blockstanbul
+      - transformers

@@ -1,0 +1,93 @@
+
+{
+  "status": "success",
+  "data": {
+    "resultType": "vector",
+    "result": [
+      {
+        "metric": {
+          "__name__": "health_check",
+          "instance": "localhost",
+          "job": "bloc",
+          "location": "blockapps-bloc"
+        },
+        "value": [
+          1553824884.792,
+          "1"
+        ]
+      },
+      {
+        "metric": {
+          "__name__": "health_check",
+          "instance": "localhost",
+          "job": "slipstream",
+          "location": "slipstream_main"
+        },
+        "value": [
+          1553824884.792,
+          "1"
+        ]
+      },
+      {
+        "metric": {
+          "__name__": "health_check",
+          "instance": "localhost",
+          "job": "core-api",
+          "location": "core-api"
+        },
+        "value": [
+          1553824884.792,
+          "1"
+        ]
+      },
+      {
+        "metric": {
+          "__name__": "health_check",
+          "instance": "localhost",
+          "job": "strato-p2p",
+          "location": "strato_p2p"
+        },
+        "value": [
+          1553824884.792,
+          "1"
+        ]
+      },
+      {
+        "metric": {
+          "__name__": "health_check",
+          "instance": "localhost",
+          "job": "vm-runner",
+          "location": "vm_main"
+        },
+        "value": [
+          1553824884.792,
+          "1"
+        ]
+      },
+      {
+        "metric": {
+          "__name__": "health_check",
+          "instance": "localhost",
+          "job": "vault-wrapper",
+          "location": "blockapps-vault-wrapper-server"
+        },
+        "value": [
+          1553824884.792,
+          "1"
+        ]
+      },
+      {
+        "metric": {
+          "__name__": "health_check",
+          "instance": "localhost",
+          "job": "strato-sequencer",
+          "location": "seq_main"
+        },
+        "value": [
+          1553824884.792,
+          "1"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+name: seqevents
+
+dependencies:
+  - base
+  - binary
+  - blockapps-data
+  - blockapps-datadefs
+  - QuickCheck
+
+library:
+  source-dirs: src/
+  ghc-options: -fconstraint-solver-iterations=8
+  dependencies:
+    - aeson
+    - blockstanbul
+    - bytestring
+    - deepseq
+    - ethereum-rlp
+    - format
+    - generic-arbitrary
+    - kafka-monad
+    - lens
+    - merkle-patricia-db
+    - monad-alter
+    - prometheus-client
+    - strato-conf
+    - strato-model
+    - text
+
+tests:
+  seqevents-spec:
+    source-dirs: test/
+    main: EventSpec.hs
+    ghc-options: -dynamic
+    dependencies:
+      - hspec
+      - seqevents

@@ -1,0 +1,62 @@
+name: merkle-patricia-db
+version: 0.0.1
+build-type: Simple
+author: Jamshid
+maintainer:    jamshidnh@gmail.com
+synopsis: A modified Merkle Patricia DB
+category:      Data Structures
+description:
+    The modified Merkle Patricia DB described in the Ethereum Yellowpaper
+
+dependencies:
+  - base
+  - bytestring
+  - ethereum-rlp
+  - leveldb-haskell
+  - monad-alter
+  - nibblestring
+  - resourcet
+  - strato-model
+  - transformers
+
+library:
+  source-dirs: src
+  dependencies:
+  - base16-bytestring
+  - binary
+  - conduit
+  - containers
+  - data-default
+  - data-fix
+  - deepseq
+  - format
+  - mtl
+  - QuickCheck
+  - Ranged-sets
+
+
+tests:
+  test-merkle-patricia-db:
+    source-dirs: test
+    main:        MerklePatriciaSpec.hs
+    ghc-options: -dynamic
+    dependencies:
+      - HUnit
+      - hspec
+      - hspec-contrib
+      - merkle-patricia-db
+      - strato-model
+
+benchmarks:
+  mpbench:
+    main: MPBench.hs
+    source-dirs: bench/
+    ghc-options: -dynamic
+    dependencies:
+      - criterion
+      - deepseq
+      - directory
+      - merkle-patricia-db
+      - directory
+      - unix
+      - QuickCheck

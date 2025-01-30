@@ -1,0 +1,29 @@
+name: blockapps-datadefs
+
+dependencies:
+  - aeson
+  - base
+  - base16-bytestring
+  - binary
+  - bytestring
+  - crypto-pubkey-types
+  - deepseq
+  - ethereum-encryption
+  - evm-solidity
+  - format
+  - generic-arbitrary
+  - generic-random
+  - labeled-error
+  - persistent
+  - QuickCheck
+  - strato-model
+  - swagger2
+  - text
+  - time
+  - transformers
+
+ghc-options: -Wall -O2 -fconstraint-solver-iterations=20
+
+library:
+  source-dirs: src/
+  default-extensions: TemplateHaskell
